@@ -1,4 +1,4 @@
-from PIL import Image, ImageFilter, ImageDraw
+from PIL import Image, ImageFilter, ImageDraw, ImageOps
 
 def n1():
     image = Image.open("4_8.png")
@@ -11,8 +11,10 @@ n1()
 def n2():
     image = Image.open("4_8.png")
     red = image.reduce(3)
-    red.save("4_9.png")
-    red.show()
+    s = ImageOps.mirror(red)
+    f = ImageOps.flip(s)
+    f.show()
+    f.save("4_99.png")
 n2()
 
 def n3():
