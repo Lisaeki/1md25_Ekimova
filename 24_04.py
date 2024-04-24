@@ -16,5 +16,7 @@ def n2():
 n2()
 
 def n3():
+    image = Image.open("otkrk.jpg")
+    image.show()
 
 n3()
