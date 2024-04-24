@@ -1,4 +1,4 @@
-from PIL import Image, ImageFilter, ImageDraw, ImageOps
+from PIL import Image, ImageFilter, ImageDraw, ImageOps, ImageFont
 
 def n1():
     image = Image.open("4_8.png")
@@ -26,14 +26,16 @@ def n3():
 n3()
 
 def n4():
-    images = "photo.jpg"
-    def watermark_text(inp, out, text, pos):
-        photo = Image.open(inp)
+    images = "photo2.jpg"
+    def watermark_text(input_image_path, output_image_path, text, pos):
+        photo = Image.open(input_image_path)
         drawing = ImageDraw.Draw(photo)
+        black = (3, 8, 12)
+        drawing.text(pos, text, fill=black)
         photo.show()
-        photo.save(out)
+        photo.save(output_image_path)
 
     if __name__ == '__main__':
-        img = 'photka.jpg'
-        watermark_text(img, "photka_watermarked.jpg", text = 'Text', pos=(0,0))
+        img = 'photo2.jpg'
+        watermark_text(img, "photo2_watermarked.jpg", text = 'Squirrel', pos=(10,5))
 n4()
