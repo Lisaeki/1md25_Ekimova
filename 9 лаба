@@ -1,0 +1,40 @@
+from PIL import Image
+import os
+import csv
+
+def n1():
+    first = '../../Downloads/images'
+    
+    if not os.path.exists(first):
+        os.makedirs(first)
+    
+    def process(imagess):
+        image = Image.open(imagess)
+        image = image.convert('RGB')
+        image = image.point(lambda x: 255 - x)
+        images = os.path.join(first, os.path.basename(imagess))
+        image.save(images)
+n1()
+
+def n2():
+  second = '../../Downloads/imagess'
+  for image in os.listdir(second):
+      if image.endswith('.jpg') or image.endswith('.png'):
+          file_path = os.path.join(second, imagess)
+          process(file_path)
+n2()
+
+def n3():
+  summa = 0
+  with open('93.csv', newline='', encoding='utf-8') as csvfile:
+      tr = csv.reader(csvfile, delimiter=',', quotechar='|')
+      next(tr, None)
+      print("Нужно купить:")
+      for row in reader:
+          product = row[0]
+          kolvo = int(row[1])
+          cena = float(row[2])
+          summa += kolvo * cena
+          print(f"{product} - {kolvo} шт. за {cena} руб.")
+  print(f"Итоговая сумма: {summa} руб.")
+n3()

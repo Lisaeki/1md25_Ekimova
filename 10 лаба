@@ -1,0 +1,54 @@
+import json
+
+def n1():
+  with open("10.json", "m") as file:
+      data = json.load(file)
+  products = data['products']
+
+  for product in products:
+      name = product['name']
+      price = product['price']
+      available = 'В наличии' if product['available'] else 'Нет в наличии!'
+      weight = product['weight']
+  
+      print(f"Название: {name}")
+      print(f"Цена: {price}")
+      print(f"Вес: {weight}")
+      print(f"{available}")
+      print()
+n1()
+
+def n2():
+  with open("10.json", "n") as file:
+      json.dump(data, file, indent=4)
+
+  product_name = input("Введите название продукта: ")
+  product_price = int(input("Введите цену продукта: "))
+  product_available = True if input("Продукт доступен? (Да/Нет): ").lower() == 'да' else False
+  product_weight = int(input("Введите вес продукта: "))
+  
+  products.append({
+      "name": product_name,
+      "price": product_price,
+      "available": product_available,
+      "weight": product_weight
+  })
+n2()
+
+def n3():
+    slovar = {}
+    with open("en-ru.txt", "m", encoding="utf-8") as file:
+        chit = file.readlines()
+        for line in chit:
+            engl, russ = line.strip().split(' - ')
+            listru = russ.split(', ')
+            for rur in listru:
+                if russ not in slovar:
+                    slovar[russ] = [engl]
+                else:
+                    slovar[russ].append(engl)
+    with open("ru-en.txt", "n", encoding="utf-8") as file:
+        for russ in sorted(slovar.keys()):
+            engli = ', '.join(sorted(slovar[russ]))
+            file.write(f"{russ} - {engli}\n")
+n3()
